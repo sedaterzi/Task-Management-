@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:taskmanagement/model/event.dart';
+import 'package:taskmanagement/provider/eventProvider.dart';
 import 'package:taskmanagement/utils.dart';
 
 class EventEditPage extends StatefulWidget {
@@ -71,7 +73,7 @@ class _EventEditPageState extends State<EventEditPage> {
           ),
           icon: Icon(Icons.done),
           label: Text('KAYDET'),
-          onPressed: () {},
+          onPressed: saveForm,
         ),
       ];
 
@@ -80,7 +82,7 @@ class _EventEditPageState extends State<EventEditPage> {
         validator: (title) =>
             title != null && title.isEmpty ? 'Etkinlik Başlığı Giriniz.' : null,
         style: TextStyle(fontSize: 24),
-        onFieldSubmitted: (_) {},
+        onFieldSubmitted: (_) => saveForm(),
         decoration: InputDecoration(
             border: UnderlineInputBorder(
                 borderRadius: BorderRadius.only(
@@ -124,22 +126,24 @@ class _EventEditPageState extends State<EventEditPage> {
               flex: 2,
               child: DropDownField(
                 text: Utils.toDate(toDate),
-                onClicked: () {},
+                onClicked: () => selectToDateTime(slctDate: true),
               )),
           Expanded(
               child: DropDownField(
             text: Utils.toTime(toDate),
-            onClicked: () {},
+            onClicked: () => selectToDateTime(slctDate: false),
           ))
         ],
       );
-
+//Başlangıç saat değeri kontrol ve ayarlaması
   Future selectFromDateTime({bool slctDate}) async {
     final date = await selectDateTime(fromDate, slctDate: slctDate);
     if (date == null) return;
 
     if (date.isAfter(toDate)) {
-      toDate = DateTime(date.year, date.month, date.day,toDate.hour, toDate.minute);
+      //Başlangıç, bitişten sonra kontrolü
+      toDate =
+          DateTime(date.year, date.month, date.day, toDate.hour, toDate.minute);
     }
 
     setState(() {
@@ -153,6 +157,7 @@ class _EventEditPageState extends State<EventEditPage> {
     DateTime firstDate,
   }) async {
     if (slctDate) {
+      //Takvim sınırları
       final date = await showDatePicker(
           context: context,
           initialDate: initialDate,
@@ -182,9 +187,40 @@ class _EventEditPageState extends State<EventEditPage> {
     }
   }
 
+//Bitiş saat değeri kontrol ve ayarlaması
+  Future selectToDateTime({bool slctDate}) async {
+    final date = await selectDateTime(toDate,
+        slctDate: slctDate,
+        //başlangıç tarihinden önce seçimi durdur.
+        firstDate: slctDate ? fromDate : null);
+    if (date == null) return;
+
+    setState(() {
+      toDate = date;
+    });
+  }
+
   Widget DropDownField({String text, VoidCallback onClicked}) => ListTile(
         title: Text(text),
         trailing: Icon(Icons.arrow_drop_down),
         onTap: onClicked,
       );
+
+  Future saveForm() async {
+    final isValid = _formKey.currentState.validate();
+
+    if (isValid) {
+      final event = Event(
+        title: titleController.text,
+        from: fromDate,
+        to: toDate,
+        description: 'Açıklama',
+        isAllDay: false,
+      );
+      final provider= Provider.of<EventProvider>(context,listen: false );
+      provider.addEvent(event);
+
+      Navigator.of(context).pop();
+    }
+  }
 }
