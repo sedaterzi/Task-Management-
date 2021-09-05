@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 import 'package:taskmanagement/homePage.dart';
 
+
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,11 +14,12 @@ class MyApp extends StatelessWidget {
       //////////Paket Dil Desteği////////////////
       localizationsDelegates: [SfGlobalLocalizations.delegate],
       supportedLocales: [
-        const Locale('tr'),
+        const Locale('tr'), 
       ],
       locale: const Locale('tr'),
       //////////////////////////
       debugShowCheckedModeBanner: false,
+        
       title: 'Task Management',
       theme: ThemeData(
         primarySwatch: Colors.teal,

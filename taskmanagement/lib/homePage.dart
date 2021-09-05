@@ -12,6 +12,7 @@ class _TaskPageState extends State<TaskPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
        floatingActionButton: FloatingActionButton(
         onPressed: null,
         tooltip: 'Yeni Etkinlik Ekle',
@@ -31,4 +32,8 @@ class _TaskPageState extends State<TaskPage> {
       )
     );
   }
+}
+
+class MeetingDataSource extends CalendarDataSource{
+  
 }
