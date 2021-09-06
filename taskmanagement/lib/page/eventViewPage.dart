@@ -20,7 +20,7 @@ class EventViewPage extends StatelessWidget {
         leading: CloseButton(),
         actions: buildViewActions(context, event),
       ),
-      body: ListView(
+     /* body: ListView(
         padding: EdgeInsets.all(32),
         children: <Widget>[
           buildDateTime(event),
@@ -39,11 +39,11 @@ class EventViewPage extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
         ],
-      ),
+      ),*/
     );
 
   }
-
+/*
   Widget buildDateTime(Event event) {
     return Column(
       children: [
@@ -63,6 +63,14 @@ class EventViewPage extends StatelessWidget {
             .pushReplacement(MaterialPageRoute(builder: (context) => EventEditPage(event:event))),   
        ),
   }
+*/
 
+  List<Widget> buildViewActions(BuildContext context, Event event) =>
+    [ IconButton(
+       icon: Icon(Icons.edit),
+       onPressed: ()=> Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (context) => EventEditPage(event:event))),   
+       ),];
+  
   
 }

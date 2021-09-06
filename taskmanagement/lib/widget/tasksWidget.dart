@@ -37,13 +37,13 @@ class _TasksWidgetState extends State<TasksWidget> {
       selectionDecoration: BoxDecoration(
         color: Colors.transparent,
       ),
-      onTap: (details) {
+      /*onTap: (details) {
         if (details.appointments == null) return;
         final event = details.appointments!.first;
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => EventViewPage(event:event),
         
         ));
-      },
+      },*/
     );
   }
 
