@@ -1,6 +1,6 @@
 # Task-Management-
-# Amaçlanan: Kullanıcının günlük, haftalık, aylık olarak yapacağı işleri planladığı küçük bir test proje uygulaması.
-Uygulama Android ve Chrome Ekran Görüntüleri:[PITON_TestRapor.pdf](https://github.com/sedaterzi/Task-Management-/files/7117586/PITON_TestRapor.pdf)
+# Amaçlanan: -- Kullanıcının günlük, haftalık, aylık olarak yapacağı işleri planladığı küçük bir test proje uygulaması.
+Uygulama Android ve Chrome Ekran Görüntüleri:  -- [PITON_TestRapor.pdf](https://github.com/sedaterzi/Task-Management-/files/7117586/PITON_TestRapor.pdf)
 # Eksiklikler ve Hatalar: 
 --Yeni etkinlik ekleme tarihinin, seçilen tarih ve saat aralığında değil de anlık gerçekleşmek üzere anlık günün tarih ve saatini alması.
 --Ajanda görünümünde etkinlik adının görünmemesi.
