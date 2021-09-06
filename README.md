@@ -15,4 +15,5 @@ Synfusion Calendar widgeti hakkında tecrübe edildi.
 # Teknik Bilgi: 
 Synfusion Calendar widgeti özelleştirilerek ve gerekli back-end fonksiyonları yazılarak program gerçekleştirilmeye çalışıldı. State Management kısmında Provider tercih edildi. Sürenin kısıtlı olmasından dolayı ve kodlama aşamasında sıkça oluşan problemlerden dolayı, program son haline ulaşamadı.
 
-******* Proje Apk Linki: https://1drv.ms/u/s!AmfDaQnpFxyrgaMbED7ggahZgdhhvg?e=VVLyI9 
+# Proje Apk Linki:
+https://1drv.ms/u/s!AmfDaQnpFxyrgaMbED7ggahZgdhhvg?e=VVLyI9 
