@@ -5,9 +5,9 @@ import 'package:taskmanagement/provider/eventProvider.dart';
 import 'package:taskmanagement/utils.dart';
 
 class EventEditPage extends StatefulWidget {
-  final Event event;
+  final Event? event;
 
-  const EventEditPage({Key key, this.event}) : super(key: key);
+  const EventEditPage({Key? key,  this.event}) : super(key: key);
 
   @override
   _EventEditPageState createState() => _EventEditPageState();
@@ -16,8 +16,8 @@ class EventEditPage extends StatefulWidget {
 class _EventEditPageState extends State<EventEditPage> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
-  DateTime fromDate;
-  DateTime toDate;
+  late DateTime fromDate;
+  late DateTime toDate;
 
   @override
   void initState() {
@@ -136,7 +136,7 @@ class _EventEditPageState extends State<EventEditPage> {
         ],
       );
 //Başlangıç saat değeri kontrol ve ayarlaması
-  Future selectFromDateTime({bool slctDate}) async {
+  Future selectFromDateTime({required bool slctDate}) async {
     final date = await selectDateTime(fromDate, slctDate: slctDate);
     if (date == null) return;
 
@@ -151,10 +151,10 @@ class _EventEditPageState extends State<EventEditPage> {
     });
   }
 
-  Future<DateTime> selectDateTime(
+  Future<DateTime?> selectDateTime(
     DateTime initialDate, {
-    bool slctDate,
-    DateTime firstDate,
+    required bool slctDate,
+     DateTime? firstDate,
   }) async {
     if (slctDate) {
       //Takvim sınırları
@@ -188,7 +188,7 @@ class _EventEditPageState extends State<EventEditPage> {
   }
 
 //Bitiş saat değeri kontrol ve ayarlaması
-  Future selectToDateTime({bool slctDate}) async {
+  Future selectToDateTime({required bool slctDate}) async {
     final date = await selectDateTime(toDate,
         slctDate: slctDate,
         //başlangıç tarihinden önce seçimi durdur.
@@ -200,14 +200,14 @@ class _EventEditPageState extends State<EventEditPage> {
     });
   }
 
-  Widget DropDownField({String text, VoidCallback onClicked}) => ListTile(
+  Widget DropDownField({required String text, required VoidCallback onClicked}) => ListTile(
         title: Text(text),
         trailing: Icon(Icons.arrow_drop_down),
         onTap: onClicked,
       );
 
   Future saveForm() async {
-    final isValid = _formKey.currentState.validate();
+    final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
       final event = Event(
@@ -217,7 +217,7 @@ class _EventEditPageState extends State<EventEditPage> {
         description: 'Açıklama',
         isAllDay: false,
       );
-      final provider= Provider.of<EventProvider>(context,listen: false );
+      final provider = Provider.of<EventProvider>(context, listen: false);
       provider.addEvent(event);
 
       Navigator.of(context).pop();

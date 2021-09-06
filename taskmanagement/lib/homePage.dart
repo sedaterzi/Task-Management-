@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:taskmanagement/page/eventEditPage.dart';
 import 'package:taskmanagement/widget/calendar.dart';
 
 class TaskPage extends StatefulWidget {
-  const TaskPage({Key key}) : super(key: key);
+  const TaskPage({Key? key}) : super(key: key);
 
   @override
   _TaskPageState createState() => _TaskPageState();

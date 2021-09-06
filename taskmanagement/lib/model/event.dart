@@ -9,10 +9,10 @@ class Event {
   final bool isAllDay;
 
   const Event({
-      this.title,
-      this.description,
-      this.from,
-      this.to,
+      required this.title,
+      required this.description,
+      required this.from,
+      required this.to,
       this.backgroundColor=Colors.lightGreen,
       this.isAllDay = false,});
 }
