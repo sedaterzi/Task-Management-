@@ -1,6 +1,6 @@
 # Task-Management-
 # Amaçlanan:
-Kullanıcının günlük, haftalık, aylık olarak yapacağı işleri planladığı küçük bir test proje uygulaması.
+Flutter ile kullanıcının günlük, haftalık, aylık olarak yapacağı işleri planladığı küçük bir test proje uygulaması.
 Uygulama Android ve Chrome Ekran Görüntüleri:  
 [PITON_TestRapor.pdf](https://github.com/sedaterzi/Task-Management-/files/7117586/PITON_TestRapor.pdf)
 # Eksiklikler ve Hatalar: 
